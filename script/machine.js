@@ -56,14 +56,8 @@ function createACard(interviewCard) {
 }
 
 function render() {
-    rcSection.innerHTML = `
-        <p>Rejected Cards</p>
-
-    `;
-    icSection.innerHTML = `
-        <p>Interview Cards</p>
-
-    `;
+    rcSection.innerHTML = ``;
+    icSection.innerHTML = ``;
 
     for (const interviewCard of interviewCardsList) {
         const newCard = createACard(interviewCard);
@@ -76,13 +70,19 @@ function render() {
     calculateCount();
 }
 
-function filter(id) {
+function filter(secctionId, buttonId) {
     // console.log('filter called from:', id);
     acSection.classList.add('hidden');
     icSection.classList.add('hidden');
     rcSection.classList.add('hidden');
-
-    const selectedSection = document.getElementById(id);
+    const selectedSection = document.getElementById(secctionId);
     selectedSection.classList.remove('hidden');
+
+    allBtn.classList.remove('btn-soft', 'btn-primary');
+    interviewBtn.classList.remove('btn-soft', 'btn-primary');
+    rejectedBtn.classList.remove('btn-soft', 'btn-primary');
+    const selectedBtn = document.getElementById(buttonId);
+    selectedBtn.classList.add('btn-soft', 'btn-primary');
+    
     render();
 }

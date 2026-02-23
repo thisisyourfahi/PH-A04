@@ -12,8 +12,8 @@
 </head>
 
 <body class="container mx-auto">
-    <header class="space-y-8">
-        <h1 class="text-3xl font-bold">Job Application Tracker</h1>
+    <header class="pt-4 space-y-8">
+        <h1 class="text-4xl font-bold">Job Application Tracker</h1>
 
         <!-- dynamic counts -->
         <div class="grid md:grid-cols-3 gap-4">
@@ -40,9 +40,9 @@
 
             <!-- buttons -->
             <div class="buttons space-x-2">
-                <button onclick="filter('all-cards')" id="filter-all" class="btn btn-primary btn-soft">All</button>
-                <button onclick="filter('int-cards')" id="filter-interview" class="btn btn-primary btn-soft">Interview</button>
-                <button onclick="filter('rej-cards')" id="filter-rejected" class="btn btn-primary btn-soft">Rejected</button>
+                <button onclick="filter('all-cards', 'filter-all')" id="filter-all" class="btn btn-soft">All</button>
+                <button onclick="filter('int-cards', 'filter-interview')" id="filter-interview" class="btn btn-soft">Interview</button>
+                <button onclick="filter('rej-cards', 'filter-rejected')" id="filter-rejected" class="btn btn-soft">Rejected</button>
             </div>
 
             <!-- icSection -->

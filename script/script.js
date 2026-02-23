@@ -10,6 +10,10 @@ let acSection = document.getElementById('all-cards');
 let icSection = document.getElementById('int-cards');
 let rcSection = document.getElementById('rej-cards');
 
+let allBtn = document.getElementById('filter-all');
+let interviewBtn = document.getElementById('filter-interview');
+let rejectedBtn = document.getElementById('filter-rejected');
+
 
 // event occured in acSection
 acSection.addEventListener('click', function (event) {
