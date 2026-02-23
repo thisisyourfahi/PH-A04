@@ -9,34 +9,42 @@
     <!-- daisy + tailwind -->
     <link href="https://cdn.jsdelivr.net/npm/daisyui@5" rel="stylesheet" type="text/css" />
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+
+    <style>
+        .sta {
+            padding: 2px 8px;
+            background-color: rgba(128, 128, 128, 0.131);
+            width: fit-content;
+        }
+    </style>
 </head>
 
 <body class="container mx-auto">
     <header class="pt-4 space-y-8">
-        <h1 class="text-4xl font-bold">Job Application Tracker</h1>
+        <h1 class="text-4xl font-bold text-blue-900">Job Application Tracker</h1>
 
         <!-- dynamic counts -->
         <div class="grid md:grid-cols-3 gap-4">
             <div class="shadow-sm p-4 rounded-md">
                 <p>Total</p>
-                <p id="total-count" class="text-2xl">0</p>
+                <p id="total-count" class="text-2xl text-blue-900">0</p>
             </div>
             <div class="shadow-sm p-4 rounded-md">
                 <p>Interview</p>
-                <p id="interview-count" class="text-2xl">0</p>
+                <p id="interview-count" class="text-2xl text-success">0</p>
             </div>
             <div class="shadow-sm p-4 rounded-md">
                 <p>Rejected</p>
-                <p id="rejected-count" class="text-2xl">0</p>
+                <p id="rejected-count" class="text-2xl text-error">0</p>
             </div>
         </div>
 
-        <hr>
+        <!-- <hr class="border-neutral/30"> -->
     </header>
 
     <main>
         <section class="space-y-4 mt-4">
-            <h1 class="text-2xl font-bold">Available Jobs</h1>
+            <h1 class="text-2xl font-bold text-blue-900">Available Jobs</h1>
 
             <!-- buttons -->
             <div class="buttons space-x-2">
