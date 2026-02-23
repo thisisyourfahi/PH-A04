@@ -2,9 +2,8 @@ let totalCount = document.getElementById('total-count');
 let interviewCount = document.getElementById('interview-count');
 let rejectedCount = document.getElementById('rejected-count');
 
-let allCardsList = document.querySelector('.all-cards');
-let interviewCardsList = [], rejectedCardsList = [];
-calculateCount();
+let allCardParent = document.querySelector('.all-cards');
+let allCardsList = [], interviewCardsList = [], rejectedCardsList = [];
 
 let acSection = document.getElementById('all-cards');
 let icSection = document.getElementById('int-cards');
@@ -13,6 +12,11 @@ let rcSection = document.getElementById('rej-cards');
 let allBtn = document.getElementById('filter-all');
 let interviewBtn = document.getElementById('filter-interview');
 let rejectedBtn = document.getElementById('filter-rejected');
+
+calculateCount();
+addCardsToAllCardsList();
+
+
 
 
 // event occured in acSection
@@ -32,6 +36,14 @@ acSection.addEventListener('click', function (event) {
             cardInfo.sta = 'INTERVIEW';
             clickedCard.querySelector('.sta').innerText = 'INTERVIEW';
             interviewCardsList.push(cardInfo);
+
+            for (const card of allCardsList) {
+                if (card.title === cardInfo.title) {
+                    card.sta = 'INTERVIEW';
+                }
+            }
+
+            rejectedCardsList = rejectedCardsList.filter(item => item.title !== cardInfo.title);
             render();
         }
     } else if (clickedBtn.classList.contains('btn-error')) {
@@ -43,6 +55,14 @@ acSection.addEventListener('click', function (event) {
             cardInfo.sta = 'REJECTED';
             clickedCard.querySelector('.sta').innerText = 'REJECTED';
             rejectedCardsList.push(cardInfo);
+
+            for (const card of allCardsList) {
+                if (card.title === cardInfo.title) {
+                    card.sta = 'REJECTED';
+                }
+            }
+
+            interviewCardsList = interviewCardsList.filter(item => item.title !== cardInfo.title);
             render();
         }
     }
@@ -57,6 +77,14 @@ icSection.addEventListener('click', function (event) {
         // console.log('rejected clicked in icSection. need to remove the card from the interviewCardList and then add it to the rejectedCardList');
         const cardInfo = createCardInfo(clickedCard);
         interviewCardsList = interviewCardsList.filter(item => item.title !== cardInfo.title);
+
+        // changing status of the card from all card section
+        for (const card of allCardsList) {
+            if (card.title === cardInfo.title) {
+                card.sta = 'REJECTED';
+            }
+        }
+
         cardInfo.sta = 'REJECTED';
         rejectedCardsList.push(cardInfo);
         render();
@@ -74,6 +102,13 @@ rcSection.addEventListener('click', function (event) {
     if (clickedBtn.classList.contains('btn-success')) {
         const cardInfo = createCardInfo(clickedCard);
         rejectedCardsList = rejectedCardsList.filter(item => item.title !== cardInfo.title);
+
+        for (const card of allCardsList) {
+            if (card.title === cardInfo.title) {
+                card.sta = 'INTERVIEW';
+            }
+        }
+
         cardInfo.sta = 'INTERVIEW';
         interviewCardsList.push(cardInfo);
         render();

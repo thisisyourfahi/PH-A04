@@ -1,5 +1,14 @@
+function addCardsToAllCardsList() {
+    const nodes = allCardParent.children;
+    for (const node of nodes) {
+        const card = createCardInfo(node);
+        allCardsList.push(card);
+    }
+    render();
+}
+
 function calculateCount() {
-    totalCount.innerText = allCardsList.children.length;
+    totalCount.innerText = allCardParent.children.length;
     interviewCount.innerText = interviewCardsList.length;
     rejectedCount.innerText = rejectedCardsList.length;
 }
@@ -56,8 +65,9 @@ function createACard(interviewCard) {
 }
 
 function render() {
-    rcSection.innerHTML = ``;
-    icSection.innerHTML = ``;
+    rcSection.innerHTML = '';
+    icSection.innerHTML = '';
+    acSection.innerHTML = '';
 
     for (const interviewCard of interviewCardsList) {
         const newCard = createACard(interviewCard);
@@ -66,6 +76,10 @@ function render() {
     for (const rejectedCard of rejectedCardsList) {
         const newCard = createACard(rejectedCard);
         rcSection.appendChild(newCard);
+    }
+    for (const allCard of allCardsList) {
+        const newCard = createACard(allCard);
+        acSection.appendChild(newCard);
     }
     calculateCount();
 }
