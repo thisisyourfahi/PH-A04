@@ -44,3 +44,7 @@ p.innerText = 'Hello there';
 
 const main = document.querySelector('main');
 main.appendChild(p);
+```
+## 3. Event bubbling
+
+**Event bubbling** is a way that events move through the DOM when something happens, like a click. It starts at the element I actually clicked and then bubbles up to its parents, all the way to the top.
