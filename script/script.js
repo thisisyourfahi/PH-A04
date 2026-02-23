@@ -12,41 +12,66 @@ let rcSection = document.getElementById('rej-cards');
 
 
 // event occured in acSection
-acSection.addEventListener('click', function(event) {
+acSection.addEventListener('click', function (event) {
     const clickedCard = event.target.closest('.card');
     const clickedBtn = event.target.closest('.btn');
 
-    
+
     // which button was clicked?
     if (clickedBtn.classList.contains('btn-success')) {
         const cardInfo = createCardInfo(clickedCard);
 
         // does it exist on the interviewCardList?
         const exist = interviewCardsList.find(item => item.title === cardInfo.title);
-        if (exist) {
-            console.log('exist in the intcardlist');
-        } else {
-            console.log('doesnt exist in the intcardlist');
+        if (!exist) {
+            // push in the existence list and render
+            cardInfo.sta = 'INTERVIEW';
+            clickedCard.querySelector('.sta').innerText = 'INTERVIEW';
+            interviewCardsList.push(cardInfo);
+            render();
         }
     } else if (clickedBtn.classList.contains('btn-error')) {
         const cardInfo = createCardInfo(clickedCard);
 
         // does it exist in the rejectedCardList?
         const exist = rejectedCardsList.find(item => item.title === cardInfo.title);
-        if (exist) {
-            console.log('exist in the rejectedCardList');
-        } else {
-            console.log('doesnt exist in the rejectedCardList');
+        if (!exist) {
+            cardInfo.sta = 'REJECTED';
+            clickedCard.querySelector('.sta').innerText = 'REJECTED';
+            rejectedCardsList.push(cardInfo);
+            render();
         }
     }
 })
 
 // event occured in icSection
-icSection.addEventListener('click', function(event) {
-    console.log('event happened in icSection');
+icSection.addEventListener('click', function (event) {
+    const clickedCard = event.target.closest('.card');
+    const clickedBtn = event.target.closest('.btn');
+
+    if (clickedBtn.classList.contains('btn-error')) {
+        // console.log('rejected clicked in icSection. need to remove the card from the interviewCardList and then add it to the rejectedCardList');
+        const cardInfo = createCardInfo(clickedCard);
+        interviewCardsList = interviewCardsList.filter(item => item.title !== cardInfo.title);
+        cardInfo.sta = 'REJECTED';
+        rejectedCardsList.push(cardInfo);
+        render();
+    }
+
 })
 
 // event occured in rcSection
-rcSection.addEventListener('click', function(event) {
+rcSection.addEventListener('click', function (event) {
     console.log('event happened in rcSectino');
+
+    const clickedCard = event.target.closest('.card');
+    const clickedBtn = event.target.closest('.btn');
+
+    if (clickedBtn.classList.contains('btn-success')) {
+        const cardInfo = createCardInfo(clickedCard);
+        rejectedCardsList = rejectedCardsList.filter(item => item.title !== cardInfo.title);
+        cardInfo.sta = 'INTERVIEW';
+        interviewCardsList.push(cardInfo);
+        render();
+    }
 })
