@@ -35,7 +35,7 @@
     </header>
 
     <main>
-        <section>
+        <section class="space-y-4">
             <h1 class="text-2xl font-bold">Available Jobs</h1>
 
             <!-- buttons -->
@@ -44,8 +44,74 @@
                 <button id="filter-interview" class="btn btn-primary btn-soft">Interview</button>
                 <button id="filter-rejected" class="btn btn-primary btn-soft">Rejected</button>
             </div>
+
+            <!-- jobs cards -->
+            <div class="all-cards space-y-4">
+                <div class="card shadow-sm rounded-md p-4 space-y-4">
+                    <!-- title + role -->
+                    <div>
+                        <p class="title font-semibold text-xl">Mobile First Corp</p>
+                        <p class="role">React Native Developer</p>
+                    </div>
+
+                    <!-- location + time + salary -->
+                    <div class="flex  gap-8">
+                        <p class="location">Remote</p>
+                        <p class="time">Full-time</p>
+                        <p class="salary">$130,000 - $175,000</p>
+                    </div>
+
+                    <!-- status + description -->
+                    <div>
+                        <p class="sta">NOT APPLIED</p>
+                        <p class="des">
+                            Build cross-platform mobile applications using React Native. Work on products used by
+                            millions of users worldwide.
+                        </p>
+                    </div>
+
+                    <!-- interview + rejected -->
+                    <div>
+                        <button class="btn btn-outline btn-success">INTERVIEW</button>
+                        <button class="btn btn-outline btn-error">REJECTED</button>
+                    </div>
+                </div>
+
+                <div class="card shadow-sm rounded-md p-4 space-y-4">
+                    <!-- title + role -->
+                    <div>
+                        <p class="title font-semibold text-xl">WebFlow Agency</p>
+                        <p class="role">Web Designer & Developer</p>
+                    </div>
+
+                    <!-- location + time + salary -->
+                    <div class="flex  gap-8">
+                        <p class="location">Los Ageles, CA</p>
+                        <p class="time">Part-time</p>
+                        <p class="salary">$90,000 - $120,000</p>
+                    </div>
+
+                    <!-- status + description -->
+                    <div>
+                        <p class="sta">NOT APPLIED</p>
+                        <p class="des">
+                            Create stunning web experiences for high-profile clients. Must have portfolio and experience
+                            with modern web design trends.
+                        </p>
+                    </div>
+
+                    <!-- interview + rejected -->
+                    <div>
+                        <button class="btn btn-outline btn-success">INTERVIEW</button>
+                        <button class="btn btn-outline btn-error">REJECTED</button>
+                    </div>
+                </div>
+            </div>
         </section>
     </main>
+
+
+    
 </body>
 
 </html>
