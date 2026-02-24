@@ -69,6 +69,8 @@ acSection.addEventListener('click', function (event) {
     else if(event.target.parentNode.classList.contains('btn-delete')) {
         deleteTheCard(clickedCard);
     }
+
+    noJobs('filter-all');
 })
 
 // event occured in icSection

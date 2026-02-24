@@ -42,7 +42,7 @@ function createACard(interviewCard) {
             </div>
 
             <button class="btn btn-circle btn-delete">
-                <i class="fa-regular fa-trash-can"></i>
+                <i class="fa-regular fa-trash-can w-full"></i>
             </button>
         </div>
 
@@ -91,7 +91,6 @@ function render() {
 }
 
 function filter(secctionId, buttonId) {
-    // console.log('filter called from:', id);
     acSection.classList.add('hidden');
     icSection.classList.add('hidden');
     rcSection.classList.add('hidden');
@@ -111,7 +110,10 @@ function filter(secctionId, buttonId) {
 function noJobs(buttonId) {
     const noCards = document.getElementById('no-cards');
     noCards.classList.add('hidden');
-    
+
+    if (allCardsList.length === 0 && buttonId === 'filter-all') {
+        noCards.classList.remove('hidden');
+    }
     if (interviewCardsList.length === 0 && buttonId === 'filter-interview') {
         noCards.classList.remove('hidden');
     } 
@@ -121,7 +123,6 @@ function noJobs(buttonId) {
 }
 
 function deleteTheCard(clickedCard) {
-    // console.log('delete the card: ', clickedCard);
     const cardInfo = createCardInfo(clickedCard);
     console.log(cardInfo);
 
