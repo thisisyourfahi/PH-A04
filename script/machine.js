@@ -35,31 +35,37 @@ function createACard(interviewCard) {
     div.className = "card shadow-sm rounded-md p-4 space-y-4";
     div.innerHTML = `
         <!-- title + role -->
+        <div class="flex justify-between items-center">
             <div>
                 <p class="title font-semibold text-xl">${interviewCard.title}</p>
                 <p class="role">${interviewCard.role}</p>
             </div>
 
-            <!-- location + time + salary -->
-            <div class="flex  gap-8">
-                <p class="location">${interviewCard.location}</p>
-                <p class="time">${interviewCard.time}</p>
-                <p class="salary">${interviewCard.salary}</p>
-            </div>
+            <button class="btn btn-circle btn-delete">
+                <i class="fa-regular fa-trash-can"></i>
+            </button>
+        </div>
 
-            <!-- status + description -->
-            <div>
-                <p class="sta">${interviewCard.sta}</p>
-                <p class="des">
-                    ${interviewCard.des}
-                </p>
-            </div>
+        <!-- location + time + salary -->
+        <div class="flex  gap-8">
+            <p class="location">${interviewCard.location}</p>
+            <p class="time">${interviewCard.time}</p>
+            <p class="salary">${interviewCard.salary}</p>
+        </div>
 
-            <!-- interview + rejected -->
-            <div>
-                <button class="btn btn-outline btn-success">INTERVIEW</button>
-                <button class="btn btn-outline btn-error">REJECTED</button>
-            </div>
+        <!-- status + description -->
+        <div>
+            <p class="sta">${interviewCard.sta}</p>
+            <p class="des">
+                ${interviewCard.des}
+            </p>
+        </div>
+
+        <!-- interview + rejected -->
+        <div>
+            <button class="btn btn-outline btn-success">INTERVIEW</button>
+            <button class="btn btn-outline btn-error">REJECTED</button>
+        </div>
     `;
     return div;
 }
@@ -112,4 +118,16 @@ function noJobs(buttonId) {
     if (rejectedCardsList.length === 0 && buttonId === 'filter-rejected') {
         noCards.classList.remove('hidden');
     }
+}
+
+function deleteTheCard(clickedCard) {
+    // console.log('delete the card: ', clickedCard);
+    const cardInfo = createCardInfo(clickedCard);
+    console.log(cardInfo);
+
+    interviewCardsList = interviewCardsList.filter(item => item.title !== cardInfo.title);
+    allCardsList = allCardsList.filter(item => item.title !== cardInfo.title);
+    rejectedCardsList = rejectedCardsList.filter(item => item.title !== cardInfo.title);
+
+    render();
 }

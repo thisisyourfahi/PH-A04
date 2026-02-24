@@ -65,6 +65,9 @@ acSection.addEventListener('click', function (event) {
             interviewCardsList = interviewCardsList.filter(item => item.title !== cardInfo.title);
             render();
         }
+    } 
+    else if(event.target.parentNode.classList.contains('btn-delete')) {
+        deleteTheCard(clickedCard);
     }
 })
 
@@ -88,6 +91,8 @@ icSection.addEventListener('click', function (event) {
         cardInfo.sta = 'REJECTED';
         rejectedCardsList.push(cardInfo);
         render();
+    } else if(event.target.parentNode.classList.contains('btn-delete')) {
+        deleteTheCard(clickedCard);
     }
 
     noJobs('filter-interview');
@@ -113,6 +118,8 @@ rcSection.addEventListener('click', function (event) {
         cardInfo.sta = 'INTERVIEW';
         interviewCardsList.push(cardInfo);
         render();
+    } else if(event.target.parentNode.classList.contains('btn-delete')) {
+        deleteTheCard(clickedCard);
     }
 
     noJobs('filter-rejected');
