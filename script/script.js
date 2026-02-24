@@ -90,6 +90,7 @@ icSection.addEventListener('click', function (event) {
         render();
     }
 
+    noJobs('filter-interview');
 })
 
 // event occured in rcSection
@@ -113,4 +114,6 @@ rcSection.addEventListener('click', function (event) {
         interviewCardsList.push(cardInfo);
         render();
     }
+
+    noJobs('filter-rejected');
 })

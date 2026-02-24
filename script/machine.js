@@ -99,4 +99,17 @@ function filter(secctionId, buttonId) {
     selectedBtn.classList.add('btn-soft', 'btn-primary');
     
     render();
+    noJobs(buttonId);
+}
+
+function noJobs(buttonId) {
+    const noCards = document.getElementById('no-cards');
+    noCards.classList.add('hidden');
+    
+    if (interviewCardsList.length === 0 && buttonId === 'filter-interview') {
+        noCards.classList.remove('hidden');
+    } 
+    if (rejectedCardsList.length === 0 && buttonId === 'filter-rejected') {
+        noCards.classList.remove('hidden');
+    }
 }
